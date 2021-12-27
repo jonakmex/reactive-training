@@ -15,4 +15,10 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	@Bean
+	RouterFunction<ServerResponse> routes(){
+		return RouterFunctions.route()
+				.GET("/hello",request -> ServerResponse.ok().body(Mono.just("Hello World"),String.class))
+				.build();
+	}
 }
